@@ -1,0 +1,36 @@
+CACHE MANIFEST
+ajaxmysql.php
+ajaxclname.php
+ajaxlogin.php
+iStudy.gif
+iTutor.gif
+iSeminar.gif
+iShow.gif
+iEntertain.gif
+iWorld.gif
+iForyou.gif
+iUpdate.gif
+iAsk.gif
+logo-gradient.gif
+
+CACHE:
+nsb/images/LauncherIcon57.png
+nsb/images/icons-36-white.png
+nsb/messages.js
+nsb/jquery.mobile.js
+nsb/jquery.mobile.css
+nsb/images/ajax-loader.gif
+nsb/images/ajax-loader.png
+nsb/images/icons-18-white.png
+nsb/jquery.js
+nsb/nsbstyle.css
+nsb/images/icons-18-black.png
+nsb/images/icons-36-black.png
+nsb/images/SplashScreen.png
+nsb/hfunc.js
+messages.js
+
+NETWORK:
+*
+
+# buildtime: 1354684138.81

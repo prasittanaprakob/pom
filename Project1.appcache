@@ -1,0 +1,24 @@
+CACHE MANIFEST
+
+CACHE:
+nsb/images/LauncherIcon57.png
+nsb/images/icons-36-white.png
+nsb/messages.js
+nsb/jquery.mobile.js
+nsb/images/icons-36-black.png
+nsb/images/ajax-loader.gif
+nsb/images/ajax-loader.png
+nsb/images/icons-18-white.png
+nsb/jquery.js
+nsb/images/backgroundStripes.png
+nsb/nsbstyle.css
+nsb/images/icons-18-black.png
+nsb/jquery.mobile.css
+nsb/images/SplashScreen.png
+nsb/hfunc.js
+messages.js
+
+NETWORK:
+*
+
+# buildtime: 1355137254.11
