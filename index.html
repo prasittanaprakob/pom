@@ -3,7 +3,7 @@
 <head>
 <title>ssruIPTV</title>
 <meta name="generator" content="NS Basic/App Studio 2.6.0.3$ygbv" />
-<meta name="date" content="2012-12-28 15:27:04.912000" />
+<meta name="date" content="2012-12-28 15:40:11.423000" />
 <meta name="version" content="1.0.0" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=0.6667, user-scalable=no" />
@@ -408,7 +408,8 @@ frmIstudy.onshow = function() { savethefunction_rvar="";
   }else if (calledfrom == "itutor" ) {
     lbltitle.textContent="I-Tutor";
   }
-  lblstudentname.textContent=studentname;
+ //  lblstudentname.textContent=studentname
+  lblstudentname.textContent = regclassdata;
   for   (i = 0; i  <= UBound(regclassdata); i ++) {
     if(i == 0) {
       lblclass1.textContent = fnclname(regclassdata[i].class_id);
