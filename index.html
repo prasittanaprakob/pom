@@ -3,7 +3,7 @@
 <head>
 <title>ssruIPTV</title>
 <meta name="generator" content="NS Basic/App Studio 2.6.0.3$ygbv" />
-<meta name="date" content="2012-12-28 16:33:23.220000" />
+<meta name="date" content="2012-12-28 17:37:11.362000" />
 <meta name="version" content="1.0.0" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=0.6667, user-scalable=no" />
@@ -181,7 +181,7 @@ margin: 0 auto;
 </form>
 <form id="frmistudyvideo" action="" method="GET" onsubmit="return false;" style="display:none; position:absolute; top:0px; left:0px; height748px; width:1024px; background-color: white;
 ">
-<textarea id="txtvideodesc" class=" " name="" data-theme=c  style="text-align:left; font-size:13px; font-family:helvetica; font-style:normal; font-weight:normal; color:black; background-color:white;-webkit-overflow-scrolling:touch; " onblur="" onclick=""  autocorrect="on"  autocomplete="on"  autocapitalize="on" readonly="readonly" placeholder="Enter text here"></textarea>
+<textarea id="txtvideodesc" class=" " name="" data-theme=c  style="text-align:left; font-size:13px; font-family:helvetica; font-style:normal; font-weight:normal; color:black; background-color:white;-webkit-overflow-scrolling:touch; " onblur="" onclick=""  autocorrect="on"  autocomplete="on"  autocapitalize="on" readonly="readonly" placeholder=""></textarea>
 <label id="lblnameandclass" class="graytitle" style="text-align:left; font-size:16px; font-family:helvetica; font-style:normal; font-weight:bold; color:black; background-color:transparent; " ></label>
 <div id="pbclass1_scroller" class="" style='';>
 <canvas id="pbclass1" height="80" width="140" name="pbclass1_img"  style='background-color:transparent; border-style:none; '></canvas>
@@ -312,8 +312,8 @@ NSB_addDisableProperty(cmdSignout);NSB.addProperties(cmdSignout);
 NSB.addProperties(frmMain);
 imgIstudy.onclick = function() { savethefunction_rvar="";
   calledfrom="istudy";
-  req=(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
-  if(req.status==200) { //success
+  req=Ajax(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
+  if(req.status==200) { //success    
     regclassdata=JSON.parse(req.responseText);
   }
   ChangeForm(frmIstudy);
@@ -331,7 +331,7 @@ return savethefunction_rvar; }
 
 imgItutor.onclick = function() { savethefunction_rvar="";
   calledfrom="itutor";
-  req=(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
+  req=Ajax(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
   if(req.status==200) { //success
     regclassdata=JSON.parse(req.responseText);
   }
@@ -360,7 +360,7 @@ return savethefunction_rvar; }
 
 imgIPTV.onclick = function() { savethefunction_rvar="";
   calledfrom="iptv";
-  req=(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
+  req=Ajax(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
   if(req.status==200) { //success
     regclassdata=JSON.parse(req.responseText);
   }
@@ -408,8 +408,7 @@ frmIstudy.onshow = function() { savethefunction_rvar="";
   }else if (calledfrom == "itutor" ) {
     lbltitle.textContent="I-Tutor";
   }
- //  lblstudentname.textContent=studentname
-  lblstudentname.textContent = regclassdata;
+  lblstudentname.textContent=studentname;
   for   (i = 0; i  <= UBound(regclassdata); i ++) {
     if(i == 0) {
       lblclass1.textContent = fnclname(regclassdata[i].class_id);
@@ -432,7 +431,7 @@ frmIstudy.onshow = function() { savethefunction_rvar="";
 return savethefunction_rvar; }
 
 function fnclname(cid) { savethefunction_rvar="";
-  req1=(ajaxpath  +  "ajaxclname.php/?classid="  +  cid);
+  req1=Ajax(ajaxpath  +  "ajaxclname.php/?classid="  +  cid);
   if(req1.status==200) { //success    
     tempclass=JSON.parse(req1.responseText);
      savethefunction_rvar =tempclass[0].class_name;
@@ -465,7 +464,7 @@ txtPassword.value="";
 cmdSignin.onclick = function() { savethefunction_rvar="";
   if(UCase(txtUsername.value) != "ADMIN") {
     mytext = (txtUsername.value)  +  ","  +  (txtPassword.value);
-    req=(ajaxpath  +  "ajaxlogin.php/?xtemp="  +  mytext);
+    req=Ajax(ajaxpath  +  "ajaxlogin.php/?xtemp="  +  mytext);
     if(req.status==200) { //success
       data=JSON.parse(req.responseText);
       loginname=txtUsername.value;
@@ -588,7 +587,7 @@ frmistudyvideo.onshow = function() { savethefunction_rvar="";
     xselectedclass = "IWD0001";
   }
   mytext = xselectedclass  +  ","  +  calledfrom;
-  req=(ajaxpath  +  "ajaxvod.php/?xtemp="  +  mytext);
+  req=Ajax(ajaxpath  +  "ajaxvod.php/?xtemp="  +  mytext);
   if(req.status==200) { //success
     classvod=JSON.parse(req.responseText);
     maxvod=UBound(classvod);
@@ -703,7 +702,7 @@ frmistudyvideo.onclick = function(event) { savethefunction_rvar="";
       istudyvideo.play();
  //save onto database
       mytext = xselectedvideo  +  ","  +  loginname;
-      req=(ajaxpath  +  "ajaxtrsave.php/?xtemp="  +  mytext);
+      req=Ajax(ajaxpath  +  "ajaxtrsave.php/?xtemp="  +  mytext);
       if(req.status==200) { //success
         classvod=JSON.parse(req.responseText);
       }
@@ -890,7 +889,7 @@ return savethefunction_rvar; }
 cbocategory.onchange = function() { savethefunction_rvar="";
  var  title=createMultiDimArray('');
   xselectedcategory = cbocategory.selectedIndex();
-  req=(ajaxpath  +  "ajaxiupdate.php/?xtemp="  +  xselectedcategory);
+  req=Ajax(ajaxpath  +  "ajaxiupdate.php/?xtemp="  +  xselectedcategory);
   if(req.status==200) { //success 
     tempiupdate=JSON.parse(req.responseText);
     xi =UBound(tempiupdate);
@@ -952,7 +951,7 @@ return savethefunction_rvar; }
 frmiforyou.onshow = function() { savethefunction_rvar="";
   mytext = loginname;
   txtdisplayarea.value = "";
-  req = (ajaxpath  +  "ajaxiforyou.php/?xtemp="  +  mytext);
+  req = Ajax(ajaxpath  +  "ajaxiforyou.php/?xtemp="  +  mytext);
   if(req.status == 200) { //success
     tempfriendid=JSON.parse(req.responseText);
     xi = UBound(tempfriendid);
@@ -969,7 +968,7 @@ frmiforyou.onshow = function() { savethefunction_rvar="";
 return savethefunction_rvar; }
 
 function fnstudentname(sid) { savethefunction_rvar="";
-  req1=(ajaxpath  +  "ajaxstdname.php/?xtemp="  +  sid);
+  req1=Ajax(ajaxpath  +  "ajaxstdname.php/?xtemp="  +  sid);
   if(req1.status==200) { //success    
     tempstudentname=JSON.parse(req1.responseText);
      savethefunction_rvar =tempstudentname[0].student_name;
