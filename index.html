@@ -3,7 +3,7 @@
 <head>
 <title>ssruIPTV</title>
 <meta name="generator" content="NS Basic/App Studio 2.6.0.3$ygbv" />
-<meta name="date" content="2012-12-28 14:55:33.049000" />
+<meta name="date" content="2012-12-28 15:12:46.922000" />
 <meta name="version" content="1.0.0" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=0.6667, user-scalable=no" />
@@ -312,7 +312,7 @@ NSB_addDisableProperty(cmdSignout);NSB.addProperties(cmdSignout);
 NSB.addProperties(frmMain);
 imgIstudy.onclick = function() { savethefunction_rvar="";
   calledfrom="istudy";
-  req=Ajax("ajaxmysql.php/?studentid="  +  loginname);
+  req=(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
   if(req.status==200) { //success
     regclassdata=JSON.parse(req.responseText);
   }
@@ -331,7 +331,7 @@ return savethefunction_rvar; }
 
 imgItutor.onclick = function() { savethefunction_rvar="";
   calledfrom="itutor";
-  req=Ajax("ajaxmysql.php/?studentid="  +  loginname);
+  req=(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
   if(req.status==200) { //success
     regclassdata=JSON.parse(req.responseText);
   }
@@ -360,7 +360,7 @@ return savethefunction_rvar; }
 
 imgIPTV.onclick = function() { savethefunction_rvar="";
   calledfrom="iptv";
-  req=Ajax("ajaxmysql.php/?studentid="  +  loginname);
+  req=(ajaxpath  +  "ajaxmysql.php/?studentid="  +  loginname);
   if(req.status==200) { //success
     regclassdata=JSON.parse(req.responseText);
   }
@@ -431,7 +431,7 @@ frmIstudy.onshow = function() { savethefunction_rvar="";
 return savethefunction_rvar; }
 
 function fnclname(cid) { savethefunction_rvar="";
-  req1=Ajax("ajaxclname.php/?classid="  +  cid);
+  req1=(ajaxpath  +  "ajaxclname.php/?classid="  +  cid);
   if(req1.status==200) { //success    
     tempclass=JSON.parse(req1.responseText);
      savethefunction_rvar =tempclass[0].class_name;
@@ -470,7 +470,7 @@ function Main() {
 cmdSignin.onclick = function() { savethefunction_rvar="";
   if(UCase(txtUsername.value) != "ADMIN") {
     mytext = (txtUsername.value)  +  ","  +  (txtPassword.value);
-    req=Ajax(ajaxpath  +  "ajaxlogin.php/?xtemp="  +  mytext);
+    req=(ajaxpath  +  "ajaxlogin.php/?xtemp="  +  mytext);
     if(req.status==200) { //success
       data=JSON.parse(req.responseText);
       loginname=txtUsername.value;
@@ -593,7 +593,7 @@ frmistudyvideo.onshow = function() { savethefunction_rvar="";
     xselectedclass = "IWD0001";
   }
   mytext = xselectedclass  +  ","  +  calledfrom;
-  req=Ajax(ajaxpath  +  "ajaxvod.php/?xtemp="  +  mytext);
+  req=(ajaxpath  +  "ajaxvod.php/?xtemp="  +  mytext);
   if(req.status==200) { //success
     classvod=JSON.parse(req.responseText);
     maxvod=UBound(classvod);
@@ -708,7 +708,7 @@ frmistudyvideo.onclick = function(event) { savethefunction_rvar="";
       istudyvideo.play();
  //save onto database
       mytext = xselectedvideo  +  ","  +  loginname;
-      req=Ajax("ajaxtrsave.php/?xtemp="  +  mytext);
+      req=(ajaxpath  +  "ajaxtrsave.php/?xtemp="  +  mytext);
       if(req.status==200) { //success
         classvod=JSON.parse(req.responseText);
       }
@@ -799,7 +799,7 @@ frmiptv.onclick = function(event) { savethefunction_rvar="";
   lbliptvstudentname.textContent=studentname  +  " - "  +   xselectedclass  +  " : "  +  xselectedclassname;
 
   mytext = xselectedclass;
-  req=Ajax("ajaxiptv.php/?xtemp="  +  mytext);
+  req=Ajax(ajaxpath  +  "ajaxiptv.php/?xtemp="  +  mytext);
   if(req.status==200) { //success
     if((req.responseText)=="OK") {
  //live streaming      
@@ -860,7 +860,7 @@ cmdsend.onclick = function() { savethefunction_rvar="";
     _msgbox_confirm("please enter your email");
   }
   mytext=(txtsubject.value)  +  ","  +  (txtdetail.value)  +  ","  +  (txtname.value)  +  ","  +  (txtcustomeremail.value);
-  req=Ajax("ajaxiask.php/?xtemp="  +  mytext);
+  req=(ajaxpath  +  "ajaxiask.php/?xtemp="  +  mytext);
 
   if(req.status==200) { //success
     _msgbox_confirm(req.responseText);
@@ -895,7 +895,7 @@ return savethefunction_rvar; }
 cbocategory.onchange = function() { savethefunction_rvar="";
  var  title=createMultiDimArray('');
   xselectedcategory = cbocategory.selectedIndex();
-  req=Ajax("ajaxiupdate.php/?xtemp="  +  xselectedcategory);
+  req=(ajaxpath  +  "ajaxiupdate.php/?xtemp="  +  xselectedcategory);
   if(req.status==200) { //success 
     tempiupdate=JSON.parse(req.responseText);
     xi =UBound(tempiupdate);
@@ -957,7 +957,7 @@ return savethefunction_rvar; }
 frmiforyou.onshow = function() { savethefunction_rvar="";
   mytext = loginname;
   txtdisplayarea.value = "";
-  req = Ajax("ajaxiforyou.php/?xtemp="  +  mytext);
+  req = (ajaxpath  +  "ajaxiforyou.php/?xtemp="  +  mytext);
   if(req.status == 200) { //success
     tempfriendid=JSON.parse(req.responseText);
     xi = UBound(tempfriendid);
@@ -974,7 +974,7 @@ frmiforyou.onshow = function() { savethefunction_rvar="";
 return savethefunction_rvar; }
 
 function fnstudentname(sid) { savethefunction_rvar="";
-  req1=Ajax("ajaxstdname.php/?xtemp="  +  sid);
+  req1=(ajaxpath  +  "ajaxstdname.php/?xtemp="  +  sid);
   if(req1.status==200) { //success    
     tempstudentname=JSON.parse(req1.responseText);
      savethefunction_rvar =tempstudentname[0].student_name;
@@ -996,7 +996,7 @@ cmdiforyousend.onclick = function() { savethefunction_rvar="";
   txtdisplayarea.value="";
   mytext = loginname  +  ","  +  xselectediforyouid  +  ","  +  txtchat.value;
 
-  req=Ajax("ajaxchatsave.php/?xtemp="  +  mytext);
+  req=Ajax(ajaxpath  +  "ajaxchatsave.php/?xtemp="  +  mytext);
   if(req.status == 200) { //success
     tempchat=JSON.parse(req.responseText);
     i=0;
